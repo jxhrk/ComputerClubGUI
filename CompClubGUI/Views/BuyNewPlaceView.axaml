@@ -1,0 +1,59 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:CompClubGUI.ViewModels"
+             xmlns:l="clr-namespace:CompClubGUI"
+             xmlns:c="clr-namespace:CompClubGUI.Views.Controls"
+			 xmlns:core="using:CompClubGUICore"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CompClubGUI.Views.BuyNewPlaceView"
+             x:DataType="vm:MainViewModel"
+			 Background="{DynamicResource MainBackg}">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
+	<Grid x:Name="MainGrid">
+		<core:MainBackground/>
+		<l:BackButton/>
+		<StackPanel Spacing="5" MaxWidth="400" VerticalAlignment="Center" Margin="10">
+			<TextBlock Text="Клуб" FontSize="20" FontWeight="Bold"/>
+			<ComboBox x:Name="ClubsComboBox" SelectionChanged="ClubsComboBox_SelectionChanged" HorizontalAlignment="Stretch" IsTextSearchEnabled="True"/>
+			<TextBlock Text="День" FontSize="20" FontWeight="Bold"/>
+			<StackPanel Orientation="Horizontal">
+				<ComboBox x:Name="DateDayComboBox"/>
+				<ComboBox x:Name="DateMonthComboBox" SelectionChanged="DateMonthComboBox_SelectionChanged" Width="150">
+					<ComboBoxItem Content="январь"/>
+					<ComboBoxItem Content="февраль"/>
+					<ComboBoxItem Content="март"/>
+					<ComboBoxItem Content="апрель"/>
+					<ComboBoxItem Content="май"/>
+					<ComboBoxItem Content="июнь"/>
+					<ComboBoxItem Content="июль"/>
+					<ComboBoxItem Content="август"/>
+					<ComboBoxItem Content="сентябрь"/>
+					<ComboBoxItem Content="октябрь"/>
+					<ComboBoxItem Content="ноябрь"/>
+					<ComboBoxItem Content="декабрь"/>
+				</ComboBox>
+			</StackPanel>
+			<TextBlock Text="Время начала" FontSize="20" FontWeight="Bold"/>
+			<StackPanel Orientation="Horizontal">
+				<ComboBox x:Name="TimeHourComboBox"/>
+				<ComboBox x:Name="TimeMinuteComboBox" SelectionChanged="TimeMinuteComboBox_SelectionChanged"/>
+			</StackPanel>
+			<TextBlock Text="Игры" FontSize="20" FontWeight="Bold"/>
+			<ComboBox x:Name="GamesComboBox" HorizontalAlignment="Stretch" IsTextSearchEnabled="True"/>
+			<TextBlock Text="Места" FontSize="20" FontWeight="Bold"/>
+			<Border Height="200" Classes="Rounded2">
+				<ListBox x:Name="PlacesList">
+
+				</ListBox>
+			</Border>
+			<Button Content="Купить место" Margin="5" HorizontalAlignment="Center" Click="ApplyButton_Click"/>
+		</StackPanel>
+	</Grid>
+
+</UserControl>

@@ -1,0 +1,31 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CompClubGUI.SideMenu">
+	<Grid>
+		<Button Click="Button_Click" Classes="Transparent" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top" Content="&#x2261;" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Center" Padding="0,-15,0,0" Width="30" Height="30" FontSize="36"/>
+		<Border x:Name="DarkBackg" PointerPressed="Border_PointerPressed" IsVisible="False" Background="#55000000">
+			<Border.Transitions>
+				<Transitions>
+					<DoubleTransition Property="Opacity" Duration="0:0:0.15" Easing="CubicEaseOut"/>
+				</Transitions>
+			</Border.Transitions>
+		</Border>
+		<Border x:Name="ContentBorder" Width="200" Background="{DynamicResource Background2}" HorizontalAlignment="Left" RenderTransform="translateX(-300px)">
+			<Border.Transitions>
+				<Transitions>
+					<TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.15" Easing="CubicEaseOut"/>
+				</Transitions>
+			</Border.Transitions>
+			<Grid>
+				<StackPanel Margin="12" Spacing="12">
+					<Button Content="Настройка" Classes="Transparent" Click="Settings_Click"/>
+					<Button Content="Оставить отзыв" Classes="Transparent" Click="LeaveFeedback_Click"/>
+				</StackPanel>
+				<Button Margin="12" VerticalAlignment="Bottom" Foreground="#FF3333" Content="Выйти" Classes="Transparent" Click="LogOut_Click"/>
+			</Grid>
+		</Border>
+	</Grid>
+</UserControl>

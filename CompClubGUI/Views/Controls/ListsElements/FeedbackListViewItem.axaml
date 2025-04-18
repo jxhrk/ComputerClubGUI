@@ -1,0 +1,21 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="55" Height="55"
+             x:Class="CompClubGUI.FeedbackListViewItem"
+			 FontSize="16"
+			 xmlns:c="using:CompClubGUICore.API.Models"
+			 Name="ItemControl"
+			 x:DataType="c:FeedbackModel">
+	<Grid RowDefinitions="30,Auto" Background="Transparent">
+		<TextBlock Grid.Row="0" Margin="7,4" Text="{Binding Name, FallbackValue=Василий}"/>
+		<TextBlock Grid.Row="0" HorizontalAlignment="Right" Text="{Binding Rating, FallbackValue=3}"/>
+		<Border Classes="Rounded" Grid.Row="1">
+			<Grid>
+				<TextBlock Margin="7" TextWrapping="Wrap" Text="{Binding Comment, FallbackValue=Текст отзыва}"/>
+			</Grid>
+		</Border>
+	</Grid>
+</UserControl>
+

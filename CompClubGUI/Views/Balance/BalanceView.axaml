@@ -1,0 +1,61 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:CompClubGUI.ViewModels"
+             xmlns:l="clr-namespace:CompClubGUI"
+			 xmlns:core="using:CompClubGUICore"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CompClubGUI.Views.BalanceView"
+             x:DataType="vm:MainViewModel"
+			 Background="{DynamicResource MainBackg}">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
+	<Grid>
+		<core:MainBackground/>
+		<l:BackButton/>
+		<Grid RowDefinitions="Auto,*">
+			<Grid Margin="10" Grid.Row="0">
+				<TextBlock Text="История баланса" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"/>
+			</Grid>
+			<Grid Margin="10,0" RowDefinitions="Auto,*" Grid.Row="1">
+				<Grid Margin="0,0,0,5">
+					<TextBlock x:Name="Balance" Foreground="{DynamicResource ForegroundHighlight}" FontSize="28" FontWeight="Bold">
+						<Run Text="{Binding User.Balance}"/>
+						<Run Text="&#x20BD;"/>
+					</TextBlock>
+					<Button Content="Пополнить" HorizontalAlignment="Right" Click="AddPaymentButton_Click"/>
+				</Grid>
+				<Grid Grid.Row="1">
+					<Border Background="{DynamicResource Background2}" CornerRadius="10">
+						<ListBox x:Name="BalanceHistoryList">
+							<ListBox.ItemTemplate>
+								<DataTemplate>
+									<l:BalanceHistoryListViewItem/>
+								</DataTemplate>
+							</ListBox.ItemTemplate>
+							<ListBox.Styles>
+								<Style Selector="ListBoxItem">
+									<Setter Property="Padding" Value="0"/>
+								</Style>
+							</ListBox.Styles>
+						</ListBox>
+
+					</Border>
+					<Grid x:Name="NoBalanceHistory">
+						<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+							<TextBlock Text="Нет пополнений" FontSize="20"/>
+							<Button Content="Пополнить" FontSize="16" Click="AddPaymentButton_Click" HorizontalAlignment="Center"/>
+						</StackPanel>
+
+					</Grid>
+				</Grid>
+			</Grid>
+			
+		</Grid>
+	</Grid>
+
+</UserControl>

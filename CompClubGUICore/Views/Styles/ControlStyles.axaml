@@ -1,0 +1,169 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<Design.PreviewWith>
+		<Border Padding="20">
+			<!-- Add Controls for Previewer Here -->
+		</Border>
+	</Design.PreviewWith>
+
+	<Style Selector="UserControl" x:DataType="UserControl">
+		<Setter Property="FontFamily" Value="/Assets#Montserrat SemiBold"/>
+	</Style>
+
+	<Style Selector="Window" x:DataType="Window">
+		<Setter Property="FontFamily" Value="/Assets#Montserrat SemiBold"/>
+	</Style>
+
+	<Style Selector="Border.Rounded" x:DataType="Border">
+		<Setter Property="Background" Value="{DynamicResource Background2}"/>
+		<Setter Property="CornerRadius" Value="10"/>
+	</Style>
+
+	<Style Selector="ListBox" x:DataType="ListBox">
+		<Setter Property="Background" Value="Transparent"/>
+	</Style>
+
+	<Style Selector="TextBox" x:DataType="TextBox">
+		<Setter Property="BorderBrush" Value="Transparent"/>
+		<Setter Property="CornerRadius" Value="8"/>
+		<Setter Property="MinHeight" Value="1"/>
+		<Setter Property="Height" Value="28"/>
+		<Setter Property="BorderThickness" Value="3"/>
+		<Setter Property="Padding" Value="4"/>
+
+		<Style Selector="^ /template/ Border#PART_BorderElement">
+			<Setter Property="BorderBrush" Value="Transparent" />
+			<Setter Property="Background" Value="{DynamicResource Background}" />
+		</Style>
+
+		<Style Selector="^:focus /template/ Border#PART_BorderElement">
+			<Setter Property="BorderBrush" Value="Transparent" />
+		</Style>
+
+		<Style Selector="^:pointerover /template/ Border#PART_BorderElement">
+			<Setter Property="BorderBrush" Value="Transparent" />
+		</Style>
+	</Style>
+
+	<Style Selector="ComboBox" x:DataType="ComboBox">
+		<Setter Property="BorderBrush" Value="Transparent"/>
+		<Setter Property="CornerRadius" Value="8"/>
+		<Setter Property="MinHeight" Value="1"/>
+		<Setter Property="Height" Value="28"/>
+		<Setter Property="BorderThickness" Value="0"/>
+		<Setter Property="Padding" Value="7"/>
+
+		<Style Selector="^:dropdownopen /template/ Border#PopupBorder">
+			<Setter Property="BorderBrush" Value="Transparent"/>
+			<Setter Property="CornerRadius" Value="8"/>
+			<Setter Property="BorderThickness" Value="0"/>
+			<Setter Property="Padding" Value="0"/>
+			<Setter Property="Background" Value="{DynamicResource Background2}"/>
+		</Style>
+	</Style>
+
+	<Style Selector="Button" x:DataType="Button">
+		<Setter Property="Background" Value="{DynamicResource Background4}"/>
+		<Setter Property="CornerRadius" Value="8"/>
+		<Setter Property="Height" Value="26"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
+		<Setter Property="Padding" Value="7,2"/>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate>
+					<Grid>
+						<Border
+							Opacity="0.5"
+							MinHeight="1"
+							CornerRadius="{TemplateBinding CornerRadius}"
+							Background="{TemplateBinding Background}"/>
+						<ContentPresenter
+							Content="{TemplateBinding Content}"
+							Margin="{TemplateBinding Padding}"
+							VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+							HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+					</Grid>
+
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+
+		<Style Selector="^:pointerover">
+			<Setter Property="Background" Value="{DynamicResource Background5}"/>
+		</Style>
+
+		<Style Selector="^:pressed">
+			<Setter Property="Background" Value="{DynamicResource Background6}"/>
+			<Setter Property="RenderTransform" Value="none" />
+		</Style>
+	</Style>
+
+	<Style Selector="Button.Transparent" x:DataType="Button">
+		<Setter Property="Padding" Value="0"/>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate>
+					<Border>
+						<ContentPresenter
+								Foreground="{TemplateBinding Foreground}"
+								Content="{TemplateBinding Content}"
+								Margin="{TemplateBinding Padding}"
+								VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+								HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+
+		<Style Selector="^:pointerover">
+			<Setter Property="Opacity" Value="0.8"/>
+		</Style>
+
+		<Style Selector="^:pressed">
+			<Setter Property="Opacity" Value="0.5"/>
+		</Style>
+
+		<Style Selector="^.Plus">
+			<Setter Property="Width" Value="25"/>
+			<Setter Property="Height" Value="30"/>
+			<Setter Property="FontSize" Value="24"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+		</Style>
+
+		<Style Selector="^.Image">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate>
+						<Border Background="{TemplateBinding Foreground}"/>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</Style>
+
+	<Style Selector="Expander" x:DataType="Expander">
+		<Setter Property="CornerRadius" Value="0"/>
+		<Setter Property="Background" Value="{DynamicResource Background}"/>
+		<Setter Property="BorderBrush" Value="{DynamicResource Background3}"/>
+		<Style Selector="^ /template/ ToggleButton#ExpanderHeader">
+			<Setter Property="BorderThickness" Value="0,0,0,1"/>
+			<Setter Property="BorderBrush" Value="{DynamicResource Background4}"/>
+			<Setter Property="Background" Value="{DynamicResource Background2}"/>
+			<Style Selector="^:pointerover /template/ Border#ToggleButtonBackground">
+				<Setter Property="Background" Value="{DynamicResource Background3}" />
+			</Style>
+		</Style>
+	</Style>
+
+	<Style Selector="Border.ListElement" x:DataType="Border">
+		<Setter Property="BorderThickness" Value="0,0,0,1"/>
+		<Setter Property="Height" Value="48"/>
+		<Setter Property="Padding" Value="20,0"/>
+		<Setter Property="BorderBrush" Value="{DynamicResource Background4}"/>
+		<Setter Property="Background" Value="{DynamicResource Background2}"/>
+		<Style Selector="^:pointerover">
+			<Setter Property="Background" Value="{DynamicResource Background3}" />
+		</Style>
+
+	</Style>
+</Styles>

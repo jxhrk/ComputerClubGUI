@@ -1,0 +1,84 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:CompClubGUI.ViewModels"
+             xmlns:c="using:CompClubGUICore.Views.Controls"
+             xmlns:core="using:CompClubGUICore"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CompClubGUI.Views.LoginRegView"
+             x:DataType="vm:LoginRegViewModel"
+		     BackgroundSizing="InnerBorderEdge"
+			 Background="{DynamicResource MainBackg}">
+
+	<UserControl.Styles>
+
+	</UserControl.Styles>
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+	  <vm:LoginRegViewModel />
+  </Design.DataContext>
+	<Grid>
+		<core:MainBackground/>
+		<Grid x:Name="MainGrid">
+			<Grid.Transitions>
+				<Transitions>
+					<ThicknessTransition Property="Margin" Duration="0:0:0.2" Easing="CubicEaseOut"/>
+				</Transitions>
+			</Grid.Transitions>
+			<Button x:Name="ThemeButton" OpacityMask="{DynamicResource ThemeButtonImage}" Width="30" Height="30" Margin="10" Classes="Transparent Image" Click="ThemeButton_Click" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+			<Grid x:Name="LoginRegPanel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MaxWidth="350" MaxHeight="190">
+				<Border Classes="Rounded" Margin="10" BoxShadow="0 0 60 0 #88000000"/>
+				<StackPanel Margin="20" Spacing="5">
+					<StackPanel x:Name="LoginFields" Spacing="5">
+						<StackPanel.Transitions>
+							<Transitions>
+								<DoubleTransition Property="Opacity" Duration="0:0:0.2" Easing="CubicEaseOut"/>
+							</Transitions>
+						</StackPanel.Transitions>
+						<TextBlock Text="Логин"/>
+						<c:NavTextBox x:Name="LoginText"/>
+						<TextBlock Text="Пароль"/>
+						<c:NavTextBox x:Name="PasswordText" PasswordChar="*"/>
+					</StackPanel>
+					<StackPanel x:Name="RegFields" Spacing="5">
+						<StackPanel.Transitions>
+							<Transitions>
+								<DoubleTransition Property="Opacity" Duration="0:0:0.2" Easing="CubicEaseOut"/>
+							</Transitions>
+						</StackPanel.Transitions>
+						<TextBlock x:Name="RepeatPasswordInfo" Text="Повторите пароль"/>
+						<c:NavTextBox x:Name="RepeatPasswordText" PasswordChar="*"/>
+						<TextBlock Text="Почта"/>
+						<c:NavTextBox x:Name="EmailText"/>
+						<TextBlock Text="ФИО"/>
+						<c:NavTextBox x:Name="FullNameText"/>
+					</StackPanel>
+				</StackPanel>
+				<StackPanel x:Name="ResetFields" Margin="20" Spacing="5">
+					<StackPanel.Transitions>
+						<Transitions>
+							<DoubleTransition Property="Opacity" Duration="0:0:0.2" Easing="CubicEaseOut"/>
+						</Transitions>
+					</StackPanel.Transitions>
+					<TextBlock Text="Почта"/>
+					<c:NavTextBox x:Name="EmailResetText"/>
+				</StackPanel>
+				<Button Content="Войти" Margin="20" x:Name="ActionButton" Click="ActionButton_Click" Padding="20,5" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+				<Border x:Name="LoadingPanel" Opacity="0.7" Margin="20" Background="{DynamicResource Background2}">
+					<Border.Transitions>
+						<Transitions>
+							<DoubleTransition Property="Opacity" Duration="0:0:0.07"/>
+						</Transitions>
+					</Border.Transitions>
+					<TextBlock Text="Загрузка" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+				</Border>
+
+			</Grid>
+			<Button x:Name="ForgotPasswordButton" Foreground="#2299FF" Classes="Transparent" Click="ForgotPasswordButton_Click" Content="Не помню пароль" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="45"/>
+			<Button x:Name="StateChangeButton" Click="StateChangeButton_Click" Content="Регистрация" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10"/>
+
+		</Grid>
+	</Grid>
+</UserControl>

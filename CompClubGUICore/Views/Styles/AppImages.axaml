@@ -1,0 +1,11 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<ResourceDictionary.ThemeDictionaries>
+		<ResourceDictionary x:Key='Light'>
+			<ImageBrush x:Key="ThemeButtonImage" Source="avares://CompClubGUICore/Assets/LightThemeIcon.png"/>
+		</ResourceDictionary>
+		<ResourceDictionary x:Key='Dark'>
+			<ImageBrush x:Key="ThemeButtonImage" Source="avares://CompClubGUICore/Assets/DarkThemeIcon.png"/>
+		</ResourceDictionary>
+	</ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>

@@ -1,0 +1,30 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:CompClubGUI.Admin.API.Models"
+             xmlns:admin="clr-namespace:CompClubGUI.Admin"
+			 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CompClubGUI.Admin.TariffControl"
+			 x:DataType="vm:TariffModel">
+	<UserControl.Styles>
+		<Style Selector="TextBlock" x:DataType="TextBlock">
+			<Setter Property="VerticalAlignment" Value="Center"/>
+		</Style>
+	</UserControl.Styles>
+	<Border Classes="ListElement">
+		<Grid>
+			<StackPanel Orientation="Horizontal" Spacing="10" Grid.Row="0">
+				<TextBlock Text="{Binding Id}"/>
+				<TextBox Text="{Binding Name}" Margin="0,0,20,0"/>
+				<TextBox Text="{Binding PricePerMinute}" MinWidth="10"/>
+				<TextBlock Text="руб. в минуту"/>
+			</StackPanel>
+			<WrapPanel HorizontalAlignment="Right" VerticalAlignment="Center">
+				<Button Content="Сохранить" IsVisible="{Binding IsDirty}" Click="SaveButton_Click" Margin="0,0,10,0"/>
+				<Button Content="Удалить" IsVisible="{Binding !IsNewlyCreated}" Click="DeleteButton_Click" Margin="0,0,10,0"/>
+				<TextBlock IsVisible="{Binding IsDirty}" Foreground="Yellow" Text="*" FontSize="32"/>
+			</WrapPanel>
+		</Grid>
+	</Border>
+</UserControl>

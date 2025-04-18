@@ -1,0 +1,28 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:c="using:CompClubGUICore.Views.Controls"
+             xmlns:l="clr-namespace:CompClubGUI"
+             xmlns:core="using:CompClubGUICore"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CompClubGUI.InternalApp.Views.MainView"
+		     BackgroundSizing="InnerBorderEdge"
+			 Background="{DynamicResource MainBackg}">
+	<UserControl.Styles>
+		<Style Selector="Button" x:DataType="Button">
+			<Setter Property="Margin" Value="10"/>
+		</Style>
+	</UserControl.Styles>
+	<Grid>
+		<core:MainBackground/>
+		<Grid x:Name="MainGrid">
+			<TextBlock Text="Запустите лаунчер" HorizontalAlignment="Center" FontSize="36"/>
+			<WrapPanel VerticalAlignment="Center" Margin="200,0">
+				<Button Content="Steam" Click="Button_Click" Width="100" Height="100"/>
+				<Button Content="Epic Games" Click="Button_Click" Width="100" Height="100"/>
+				<Button Content="VK Play" Click="Button_Click" Width="100" Height="100"/>
+			</WrapPanel>
+		</Grid>
+	</Grid>
+</UserControl>

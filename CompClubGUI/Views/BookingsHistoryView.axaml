@@ -1,0 +1,48 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:CompClubGUI.ViewModels"
+             xmlns:l="clr-namespace:CompClubGUI"
+			 xmlns:core="using:CompClubGUICore"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CompClubGUI.Views.BookingsHistoryView"
+             x:DataType="vm:MainViewModel"
+			 Background="{DynamicResource MainBackg}">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
+	<Grid x:Name="MainGrid">
+		<core:MainBackground/>
+		<l:BackButton/>
+		<Grid Margin="10" RowDefinitions="Auto,*">
+			<TextBlock Text="История" HorizontalAlignment="Center" FontSize="20" Margin="0,0,0,10" FontWeight="Bold"/>
+			<Button Content="+" Classes="Transparent Plus" Click="BuyPlaceButton_Click" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+			<Grid Grid.Row="1">
+				<Border Classes="Rounded">
+					<ListBox x:Name="BookingList"
+							 SelectionChanged="ListBox_SelectionChanged">
+						<ListBox.ItemTemplate>
+							<DataTemplate>
+								<l:BookingListViewItem/>
+							</DataTemplate>
+						</ListBox.ItemTemplate>
+						<ListBox.Styles>
+							<Style Selector="ListBoxItem">
+								<Setter Property="Padding" Value="0"/>
+							</Style>
+						</ListBox.Styles>
+					</ListBox>
+				</Border>
+				<Grid x:Name="NoPlaces">
+					<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="5">
+						<TextBlock Text="История пуста" HorizontalAlignment="Center" FontSize="20"/>
+						<Button Content="Забронировать место" Click="BuyPlaceButton_Click" FontSize="16" HorizontalAlignment="Center"/>
+					</StackPanel>
+				</Grid>
+			</Grid>
+		</Grid>
+	</Grid>
+</UserControl>

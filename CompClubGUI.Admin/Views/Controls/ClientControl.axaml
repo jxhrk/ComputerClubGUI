@@ -1,0 +1,71 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:CompClubGUI.Admin.API.Models"
+			 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CompClubGUI.Admin.ClientControl"
+			 x:DataType="vm:ClientModel">
+	<UserControl.Styles>
+		<Style Selector="TextBlock" x:DataType="TextBlock">
+			<Setter Property="VerticalAlignment" Value="Center"/>
+		</Style>
+	</UserControl.Styles>
+	<Expander HorizontalAlignment="Stretch" IsExpanded="{Binding IsExpanded}">
+		<Expander.Header>
+			<Grid>
+				<StackPanel Orientation="Horizontal" Spacing="10" Margin="5" Grid.Row="0">
+					<TextBlock Text="{Binding Id}"/>
+					<TextBox Text="{Binding Login}"/>
+					<TextBlock Text="ДЕАКТИВИРОВАН" Foreground="Red" IsVisible="{Binding !IsAlive}"/>
+				</StackPanel>
+				<TextBlock IsVisible="{Binding IsDirty}" Foreground="Yellow" Text="*" FontSize="32" HorizontalAlignment="Right"/>
+			</Grid>
+		</Expander.Header>
+		<Grid RowDefinitions="Auto,*">
+			<Grid Grid.Row="0" ColumnDefinitions="Auto,Auto" RowDefinitions="*,*,*,*,*,*,*,*,*,*,*">
+				<TextBlock Grid.Column="0" Grid.Row="0" Text="Логин:" Margin="0,0,10,0"/>
+				<TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Login}"/>
+
+				<TextBlock Grid.Column="0" Grid.Row="1" Text="Пароль:" Margin="0,0,10,0"/>
+				<TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Password}" PasswordChar="*"/>
+
+				<TextBlock Grid.Column="0" Grid.Row="2" Text="ID клиента:" Margin="0,0,10,0"/>
+				<TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding IdClient}"/>
+
+				<TextBlock Grid.Column="0" Grid.Row="3" Text="Почта:" Margin="0,0,10,0"/>
+				<TextBox Grid.Column="1" Grid.Row="3" Text="{Binding Email}"/>
+
+				<TextBlock Grid.Column="0" Grid.Row="4" Text="Баланс:" Margin="0,0,10,0"/>
+				<TextBox Grid.Column="1" Grid.Row="4" Text="{Binding Balance}"/>
+
+				<TextBlock Grid.Column="0" Grid.Row="5" Text="Фамилия:" Margin="0,0,10,0"/>
+				<TextBox Grid.Column="1" Grid.Row="5" Text="{Binding IdClientNavigation.LastName}" TextChanged="FullNameTextBox_TextChanged"/>
+
+				<TextBlock Grid.Column="0" Grid.Row="6" Text="Имя:" Margin="0,0,10,0"/>
+				<TextBox Grid.Column="1" Grid.Row="6" Text="{Binding IdClientNavigation.FirstName}" TextChanged="FullNameTextBox_TextChanged"/>
+				
+				<TextBlock Grid.Column="0" Grid.Row="7" Text="Отчество:" Margin="0,0,10,0"/>
+				<TextBox Grid.Column="1" Grid.Row="7" Text="{Binding IdClientNavigation.MiddleName}" TextChanged="FullNameTextBox_TextChanged"/>
+				
+				<TextBlock Grid.Column="0" Grid.Row="8" Text="Последний вход:" Margin="0,0,10,0"/>
+				<TextBlock Grid.Column="1" Grid.Row="8" Text="{Binding LastLogin, StringFormat='{}{0:dd.MM.yyyy HH:mm}'}"/>
+
+				<TextBlock Grid.Column="0" Grid.Row="9" Text="Дата изменения пароля:" Margin="0,0,10,0"/>
+				<TextBlock Grid.Column="1" Grid.Row="9" Text="{Binding PasswordChangedAt, StringFormat='{}{0:dd.MM.yyyy HH:mm}'}"/>
+
+				<TextBlock Grid.Column="0" Grid.Row="10" Text="Дата создания:" Margin="0,0,10,0"/>
+				<TextBlock Grid.Column="1" Grid.Row="10" Text="{Binding CreatedAt, StringFormat='{}{0:dd.MM.yyyy HH:mm}'}"/>
+			</Grid>
+			
+			<WrapPanel Grid.Row="1">
+				<Button Content="Сохранить" IsVisible="{Binding IsDirty}" Click="SaveButton_Click" Margin="0,0,10,0"/>
+				<Grid IsVisible="{Binding IsAlive}">
+					<Button Content="Деактивировать" IsVisible="{Binding !IsNewlyCreated}" Click="DeleteButton_Click" Margin="0,0,10,0"/>
+				</Grid>
+				<Button Content="БАН" IsVisible="{Binding !IsNewlyCreated}" FontSize="26" Background="#FF0000" Foreground="#AA0000" Margin="0,0,10,0"/>
+			</WrapPanel>
+		</Grid>
+			
+	</Expander>
+</UserControl>

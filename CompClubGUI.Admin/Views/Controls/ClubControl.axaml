@@ -1,0 +1,46 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:CompClubGUI.Admin.API.Models"
+			 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CompClubGUI.Admin.ClubControl"
+			 x:DataType="vm:ClubModel">
+	<UserControl.Styles>
+		<Style Selector="TextBlock" x:DataType="TextBlock">
+			<Setter Property="VerticalAlignment" Value="Center"/>
+		</Style>
+	</UserControl.Styles>
+	<Expander HorizontalAlignment="Stretch" IsExpanded="{Binding IsExpanded}">
+		<Expander.Header>
+			<Grid>
+				<StackPanel Orientation="Horizontal" Spacing="10" Margin="5" Grid.Row="0">
+					<TextBlock Text="{Binding Id}"/>
+					<TextBox Text="{Binding Name}"/>
+					<TextBlock Text="ЗАКРЫТ" Foreground="Red" IsVisible="{Binding !IsAlive}"/>
+					<Button Content="Выбрать" Click="SelectButton_Click"/>
+				</StackPanel>
+				<TextBlock IsVisible="{Binding IsDirty}" Foreground="Yellow" Text="*" FontSize="32" HorizontalAlignment="Right"/>
+			</Grid>
+		</Expander.Header>
+		<Grid RowDefinitions="Auto,*">
+			<Grid Grid.Row="0" ColumnDefinitions="Auto,Auto" RowDefinitions="*,*,*">
+				<TextBlock Grid.Column="0" Grid.Row="0" Text="Адрес:" Margin="0,0,10,0"/>
+				<TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Address, FallbackValue=address}"/>
+					
+
+				<TextBlock Grid.Column="0" Grid.Row="1" Text="Телефон:" Margin="0,0,10,0"/>
+				<TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Phone, FallbackValue=+71236661234}"/>
+
+				<TextBlock Grid.Column="0" Grid.Row="2" Text="Рабочие часы:" Margin="0,0,10,0"/>
+				<TextBox Grid.Column="1" Grid.Row="2" Text="{Binding WorkingHours, FallbackValue=666}"/>
+			</Grid>
+				
+			<WrapPanel Grid.Row="1">
+				<Button Content="Сохранить" IsVisible="{Binding IsDirty}" Click="SaveButton_Click" Margin="0,0,10,0"/>
+				<Button Content="Закрыть клуб" IsVisible="{Binding !IsNewlyCreated}" Click="DeleteButton_Click" Margin="0,0,10,0"/>
+			</WrapPanel>
+		</Grid>
+			
+	</Expander>
+</UserControl>

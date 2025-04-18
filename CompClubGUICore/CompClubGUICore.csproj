@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\DarkThemeIcon.png" />
+    <None Remove="Assets\Group.png" />
+    <None Remove="Assets\icon.png" />
+    <None Remove="Assets\LightThemeIcon.png" />
+    <None Remove="Assets\Montserrat-SemiBold.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AvaloniaResource Include="Assets\DarkThemeIcon.png" />
+    <AvaloniaResource Include="Assets\Group.png" />
+    <AvaloniaResource Include="Assets\icon.png" />
+    <AvaloniaResource Include="Assets\LightThemeIcon.png" />
+    <AvaloniaResource Include="Assets\Montserrat-SemiBold.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" />
+    <PackageReference Include="CommunityToolkit.Mvvm" />
+    <PackageReference Include="Newtonsoft.Json" />
+    <PackageReference Include="RestSharp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\Controls\MainBackground.axaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+</Project>

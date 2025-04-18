@@ -1,0 +1,19 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:controls="clr-namespace:CompClubGUI.Admin"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CompClubGUI.Admin.EmployeesFrame">
+	<Grid RowDefinitions="Auto,*">
+		<WrapPanel HorizontalAlignment="Right" Margin="10,2">
+			<Button Content="Добавить" Click="AddButton_Click"/>
+			<CheckBox x:Name="ReservedFilter" Margin="15,0,0,0" Checked="FilterCheckBox_Checked" Unchecked="FilterCheckBox_Checked"/>
+			<TextBlock Text="Забронировано" VerticalAlignment="Center"/>
+
+			<CheckBox x:Name="ActiveFilter" Margin="15,0,0,0" Checked="FilterCheckBox_Checked" Unchecked="FilterCheckBox_Checked"/>
+			<TextBlock Text="Только активные сессии" VerticalAlignment="Center"/>
+		</WrapPanel>
+		<Grid x:Name="DataListGrid" Grid.Row="1"/>
+	</Grid>
+</UserControl>

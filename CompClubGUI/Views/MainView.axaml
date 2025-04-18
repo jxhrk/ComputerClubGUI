@@ -1,0 +1,48 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:CompClubGUI.ViewModels"
+             xmlns:l="clr-namespace:CompClubGUI"
+			 xmlns:core="using:CompClubGUICore"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CompClubGUI.Views.MainView"
+             x:DataType="vm:MainViewModel"
+			 Background="{DynamicResource MainBackg}">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
+	<Grid x:Name="MainGrid">
+		<core:MainBackground/>
+		<l:SideMenu/>
+		<Grid RowDefinitions="Auto,*">
+			<Grid Margin="10" Grid.Row="0">
+				<TextBlock x:Name="HeaderName" Margin="40,0,0,0" Text="{Binding User.FirstName}" FontSize="24" FontWeight="Bold"/>
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+					<TextBlock x:Name="Balance" Foreground="{DynamicResource ForegroundHighlight}" FontSize="24" FontWeight="Bold">
+						<Run Text="{Binding User.Balance}"/>
+						<Run Text="&#x20BD;"/>
+					</TextBlock>
+					<Button Content="+" Classes="Transparent Plus" Click="AddBalanceButton_Click"/>
+				</StackPanel>
+				</Grid>
+			<Grid Margin="10" RowDefinitions="Auto,Auto,*" Grid.Row="1">
+				<TextBlock Text="Текущая бронь" FontSize="20" Margin="0,5" FontWeight="Bold"/>
+				<Button Content="История" Click="BookingsHustoryButton_Click" HorizontalAlignment="Right"/>
+				<Grid Grid.Row="1" Height="55">
+					<Border Classes="Rounded">
+						<l:BookingListViewItem x:Name="CurrentBookingDisplay" DataContext="{Binding CurrentBooking}" PointerPressed="CurrentBooking_PointerPressed"/>
+					</Border>
+					<Grid x:Name="NoPlaces">
+						<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+							<TextBlock Text="Место не забронировано" FontSize="20"/>
+							<Button Content="Забронировать" Click="BuyPlaceButton_Click" FontSize="16" HorizontalAlignment="Center"/>
+						</StackPanel>
+					</Grid>
+				</Grid>
+			</Grid>
+		</Grid>
+	</Grid>
+</UserControl>

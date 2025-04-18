@@ -1,0 +1,39 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<ResourceDictionary.ThemeDictionaries>
+		<ResourceDictionary x:Key='Light'>
+			<SolidColorBrush x:Key='Background' Color="White"/>
+			<SolidColorBrush x:Key='Background2' Color="#E0DDEE"/>
+			<SolidColorBrush x:Key='Background3' Color="#CCCCCC"/>
+			<SolidColorBrush x:Key='Background4' Color="#BBBBBB"/>
+			<SolidColorBrush x:Key='Background5' Color="#999999"/>
+			<SolidColorBrush x:Key='Background6' Color="#999999"/>
+			<SolidColorBrush x:Key='ForegroundHighlight' Color="#00AAFF"/>
+
+			<SolidColorBrush x:Key='MainBackg' Color="White"/>
+			<RadialGradientBrush x:Key='MainBackgGradient' Center="50%, 100%" GradientOrigin="50%, 100%" RadiusX="120%" RadiusY="120%">
+				<GradientStop Color="#B3A5FF" Offset="0.0"/>
+				<GradientStop Color="#CEC5FF" Offset="0.2"/>
+				<GradientStop Color="#D6C8FF" Offset="0.5"/>
+				<GradientStop Color="#EEDDFF" Offset="1.0"/>
+			</RadialGradientBrush>
+		</ResourceDictionary>
+		<ResourceDictionary x:Key='Dark'>
+			<SolidColorBrush x:Key='Background' Color="#120F28"/>
+			<SolidColorBrush x:Key='Background2' Color="#2A174D"/>
+			<SolidColorBrush x:Key='Background3' Color="#423B6B"/>
+			<SolidColorBrush x:Key='Background4' Color="#4E4680"/>
+			<SolidColorBrush x:Key='Background5' Color="#595091"/>
+			<SolidColorBrush x:Key='Background6' Color="#685CA8"/>
+			<SolidColorBrush x:Key='ForegroundHighlight' Color="#FFFF14"/>
+			
+			<SolidColorBrush x:Key='MainBackg' Color="#100035"/>
+			<RadialGradientBrush x:Key='MainBackgGradient' Center="50%, 100%" GradientOrigin="50%, 100%" RadiusX="120%" RadiusY="120%">
+				<GradientStop Color="#55389C" Offset="0.0"/>
+				<GradientStop Color="#402070" Offset="0.2"/>
+				<GradientStop Color="#2A154A" Offset="0.5"/>
+				<GradientStop Color="#100035" Offset="1.0"/>
+			</RadialGradientBrush>
+		</ResourceDictionary>
+	</ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>

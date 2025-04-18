@@ -1,0 +1,31 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 Background="{DynamicResource Background}"
+             x:Class="CompClubGUI.Admin.AdminView">
+	<UserControl.Styles>
+		<Style Selector="TextBox" x:DataType="TextBox">
+			<Setter Property="Padding" Value="5,2"/>
+		</Style>
+	</UserControl.Styles>
+	<Grid ColumnDefinitions="Auto,5,*">
+		<Grid Grid.Column="0" Background="{DynamicResource Background2}">
+			<ListBox x:Name="MenuList" SelectionChanged="ListBox_SelectionChanged">
+				<TextBlock>Клубы</TextBlock>
+				<TextBlock>Игровые места</TextBlock>
+				<TextBlock>Пользователи</TextBlock>
+				<TextBlock>Сотрудники</TextBlock>
+				<TextBlock>Тарифы</TextBlock>
+				<TextBlock>Оборудование</TextBlock>
+				<TextBlock>Отчеты</TextBlock>
+				<TextBlock>Отзывы</TextBlock>
+			</ListBox>
+		</Grid>
+
+		<GridSplitter Grid.Column="1"/>
+		
+		<Grid Grid.Column="2" x:Name="FrameContent"></Grid>
+	</Grid>
+</UserControl>

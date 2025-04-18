@@ -1,0 +1,54 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <AvaloniaUseCompiledBindingsByDefault>True</AvaloniaUseCompiledBindingsByDefault>
+  </PropertyGroup>
+  <PropertyGroup Label="Avalonia">
+    <AvaloniaNameGeneratorAttachDevTools>True</AvaloniaNameGeneratorAttachDevTools>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Avalonia" />
+    <PackageReference Include="Avalonia.Desktop" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CompClubGUI\CompClubGUI.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\DataFrames\ClubsFrame.axaml.cs">
+      <DependentUpon>ClubsFrame.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Controls\ClubControl.axaml.cs">
+      <DependentUpon>ClubControl.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Controls\ClientControl.axaml.cs">
+      <DependentUpon>ClientControl.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Controls\EquipmentControl.axaml.cs">
+      <DependentUpon>EquipmentControl.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Controls\EmployeeControl.axaml.cs">
+      <DependentUpon>EmployeeControl.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\DataFrames\ClientsFrame.axaml.cs">
+      <DependentUpon>ClientsFrame.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Controls\TariffControl.axaml.cs">
+      <DependentUpon>TariffControl.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\DataFrames\EquipmentsFrame.axaml.cs">
+      <DependentUpon>EquipmentsFrame.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\DataFrames\EmployeesFrame.axaml.cs">
+      <DependentUpon>EmployeesFrame.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\DataFrames\TariffsFrame.axaml.cs">
+      <DependentUpon>TariffsFrame.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>

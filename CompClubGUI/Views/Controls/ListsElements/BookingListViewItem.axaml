@@ -1,0 +1,22 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="55" Height="55"
+             x:Class="CompClubGUI.BookingListViewItem"
+			 FontSize="20"
+			 xmlns:c="using:CompClubGUICore.API.Models"
+			 Name="ItemControl"
+			 x:DataType="c:BookingModel">
+	<Grid Margin="14,7" ColumnDefinitions="*,Auto" Background="Transparent">
+		<StackPanel VerticalAlignment="Center">
+			<TextBlock Text="{Binding IdWorkingSpaceNavigation.IdClubNavigation.Address, FallbackValue='г. Москва, ул. Пушкина, д.5'}" FontSize="12" TextTrimming="CharacterEllipsis" Opacity="0.7"/>
+			<TextBlock Text="{Binding IdWorkingSpaceNavigation.Name, FallbackValue=Место 143}" Margin="0,-6" FontSize="30"/>
+		</StackPanel>
+		<StackPanel Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right">
+			<TextBlock FontSize="16" Text="{Binding Date, FallbackValue=01.01.2025}"/>
+			<TextBlock FontSize="28" Margin="0,-8" FontFeatures="tnum" Text="{Binding Time, FallbackValue=14:30}"/>
+		</StackPanel>
+	</Grid>
+</UserControl>
+

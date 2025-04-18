@@ -1,0 +1,57 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:CompClubGUI.Admin.API.Models"
+             xmlns:a="clr-namespace:CompClubGUI.Admin"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CompClubGUI.Admin.EquipmentControl"
+			 x:DataType="vm:EquipmentModel">
+	<UserControl.Styles>
+		<Style Selector="TextBlock" x:DataType="TextBlock">
+			<Setter Property="VerticalAlignment" Value="Center"/>
+		</Style>
+	</UserControl.Styles>
+	<Expander HorizontalAlignment="Stretch" IsExpanded="{Binding IsExpanded}">
+		<Expander.Header>
+			<Grid>
+				<StackPanel Orientation="Horizontal" Spacing="10" Margin="5" Grid.Row="0">
+					<TextBlock Text="{Binding Id}"/>
+					<TextBox Text="{Binding Name}"/>
+				</StackPanel>
+				<TextBlock IsVisible="{Binding IsDirty}" Foreground="Yellow" Text="*" FontSize="32" HorizontalAlignment="Right"/>
+			</Grid>
+		</Expander.Header>
+		<Grid RowDefinitions="Auto,*">
+			<Grid Grid.Row="0" ColumnDefinitions="Auto,Auto" RowDefinitions="*,*,*,*,*,*,*">
+				<TextBlock Grid.Column="0" Grid.Row="0" Text="Тип:" Margin="0,0,10,0"/>
+				<TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Type}"/>
+
+				<TextBlock Grid.Column="0" Grid.Row="1" Text="Спецификация:" Margin="0,0,10,0"/>
+				<TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Specification}"/>
+				
+				<TextBlock Grid.Column="0" Grid.Row="2" Text="Стоимость покупки:" Margin="0,0,10,0"/>
+				<TextBox Grid.Column="1" Grid.Row="2" Text="{Binding PurchasePrice}"/>
+
+				<TextBlock Grid.Column="0" Grid.Row="3" Text="ID Клуба:" Margin="0,0,10,0"/>
+				<TextBox Grid.Column="1" Grid.Row="3" Text="{Binding IdClub}"/>
+
+				<TextBlock Grid.Column="0" Grid.Row="4" Text="Дата покупки:" Margin="0,0,10,0"/>
+				<CalendarDatePicker Grid.Column="1" Grid.Row="4" SelectedDate="{Binding PurchaseDate}"/>
+
+				<TextBlock Grid.Column="0" Grid.Row="5" Text="Статус:" Margin="0,0,10,0"/>
+				<TextBox Grid.Column="1" Grid.Row="5" Text="{Binding Status}"/>
+				
+				<TextBlock Grid.Column="0" Grid.Row="6" Text="Количество:" Margin="0,0,10,0"/>
+				<TextBox Grid.Column="1" Grid.Row="6" Text="{Binding Quantity}"/>
+			</Grid>
+
+
+			<WrapPanel Grid.Row="1">
+				<Button Content="Сохранить" IsVisible="{Binding IsDirty}" Click="SaveButton_Click" Margin="0,0,10,0"/>
+				<Button Content="Удалить" IsVisible="{Binding !IsNewlyCreated}" Click="DeleteButton_Click" Margin="0,0,10,0"/>
+			</WrapPanel>
+		</Grid>
+			
+	</Expander>
+</UserControl>

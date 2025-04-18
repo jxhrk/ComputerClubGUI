@@ -1,0 +1,42 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:CompClubGUI.ViewModels"
+             xmlns:l="clr-namespace:CompClubGUI"
+             xmlns:c="clr-namespace:CompClubGUI.Views.Controls"
+			 xmlns:core="using:CompClubGUICore"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CompClubGUI.Views.LeaveReviewView"
+             x:DataType="vm:MainViewModel"
+			 Background="{DynamicResource MainBackg}">
+	<UserControl.Styles>
+		<Style Selector="Button.Starred" x:DataType="Button">
+			<Setter Property="Background" Value="Green"/>
+		</Style>
+	</UserControl.Styles>
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
+	<Grid x:Name="MainGrid">
+		<core:MainBackground/>
+		<l:BackButton/>
+		<Grid RowDefinitions="Auto,5,Auto,5,Auto,5,Auto" MaxWidth="400" VerticalAlignment="Center" Margin="10">
+			<TextBlock Grid.Row="0" Text="Оставьте отзыв" FontSize="20" FontWeight="Bold"/>
+			<StackPanel Grid.Row="2" Spacing="2" Orientation="Horizontal">
+				<Button x:Name="star1" Width="30" Click="StarButton_Click"/>
+				<Button x:Name="star2" Width="30" Click="StarButton_Click"/>
+				<Button x:Name="star3" Width="30" Click="StarButton_Click"/>
+				<Button x:Name="star4" Width="30" Click="StarButton_Click"/>
+				<Button x:Name="star5" Width="30" Click="StarButton_Click"/>
+			</StackPanel>
+			<TextBox AcceptsReturn="True" x:Name="ReviewText" VerticalAlignment="Stretch" TextWrapping="Wrap" Height="200" Grid.Row="4">
+				
+			</TextBox>
+			<Button Grid.Row="6" Click="SupplyButton_Click" Content="Отправить"/>
+		</Grid>
+	</Grid>
+
+</UserControl>

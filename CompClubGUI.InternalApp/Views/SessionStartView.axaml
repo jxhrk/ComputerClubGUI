@@ -1,0 +1,19 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:c="using:CompClubGUICore.Views.Controls"
+             xmlns:l="clr-namespace:CompClubGUI"
+             xmlns:core="using:CompClubGUICore"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CompClubGUI.InternalApp.Views.SessionStartView"
+		     BackgroundSizing="InnerBorderEdge"
+			 Background="{DynamicResource MainBackg}">
+	<Grid>
+		<core:MainBackground/>
+		<Grid x:Name="MainGrid">
+			<TextBlock Text="Нaчните сессию" HorizontalAlignment="Center" FontSize="36"/>
+			<Button Content="Начать сессию" Click="Button_Click" HorizontalAlignment="Center" FontSize="36" Height="100"/>
+		</Grid>
+	</Grid>
+</UserControl>

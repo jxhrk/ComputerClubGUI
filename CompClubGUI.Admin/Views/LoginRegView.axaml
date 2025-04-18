@@ -1,0 +1,41 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:c="using:CompClubGUICore.Views.Controls"
+             xmlns:l="clr-namespace:CompClubGUI.Admin"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CompClubGUI.Admin.Views.LoginRegView"
+		     BackgroundSizing="InnerBorderEdge"
+			 Background="{DynamicResource MainBackg}">
+	<Grid>
+		<Grid x:Name="MainGrid">
+			<Grid.Transitions>
+				<Transitions>
+					<ThicknessTransition Property="Margin" Duration="0:0:0.2" Easing="CubicEaseOut"/>
+				</Transitions>
+			</Grid.Transitions>
+			<Button x:Name="ThemeButton" Click="ThemeButton_Click" Content="Тема" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10"/>
+			<Grid x:Name="LoginRegPanel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MaxWidth="350" MaxHeight="190">
+				<Border Classes="Rounded" Margin="10" BoxShadow="0 0 60 0 #88000000"/>
+				<StackPanel Margin="20" Spacing="5">
+					<StackPanel x:Name="LoginFields" Spacing="5">
+						<TextBlock Text="Логин"/>
+						<c:NavTextBox x:Name="LoginText"/>
+						<TextBlock Text="Пароль"/>
+						<c:NavTextBox x:Name="PasswordText" PasswordChar="*"/>
+					</StackPanel>
+				</StackPanel>
+				<Button Content="Войти" Margin="20" x:Name="ActionButton" Click="ActionButton_Click" Padding="20,5" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+				<Border x:Name="LoadingPanel" Opacity="0.7" Margin="20" Background="{DynamicResource Background2}">
+					<Border.Transitions>
+						<Transitions>
+							<DoubleTransition Property="Opacity" Duration="0:0:0.07"/>
+						</Transitions>
+					</Border.Transitions>
+					<TextBlock Text="Загрузка" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+				</Border>
+			</Grid>
+		</Grid>
+	</Grid>
+</UserControl>

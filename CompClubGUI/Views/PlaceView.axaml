@@ -1,0 +1,41 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:CompClubGUI.ViewModels"
+             xmlns:l="clr-namespace:CompClubGUI"
+             xmlns:c="clr-namespace:CompClubGUI.Views.Controls"
+			 xmlns:core="using:CompClubGUICore"
+             xmlns:m="using:CompClubGUICore.API.Models"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CompClubGUI.Views.PlaceView"
+             x:DataType="m:BookingModel"
+			 Background="{DynamicResource MainBackg}">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
+	<Grid x:Name="MainGrid">
+		<core:MainBackground/>
+		<l:BackButton/>
+
+		<Grid Margin="10" RowDefinitions="Auto,*">
+			<TextBlock Text="Сеанс" HorizontalAlignment="Center" FontSize="20" Margin="0,0,0,10" FontWeight="Bold"/>
+
+			<StackPanel Grid.Row="1" Spacing="5" MaxWidth="400" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+				<TextBlock Text="{Binding IdWorkingSpaceNavigation.IdClubNavigation.Address, FallbackValue='г. Москва, ул. Пушкина, д.5'}" FontSize="20" FontWeight="Bold"/>
+				<TextBlock Text="{Binding IdWorkingSpaceNavigation.Name, FallbackValue=Место 143}" FontSize="20" FontWeight="Bold"/>
+				<TextBlock Text="{Binding Date, FallbackValue=01.01.2025}" FontSize="20" FontWeight="Bold"/>
+				<TextBlock Text="{Binding Time, FallbackValue=14:30}" FontSize="20" FontWeight="Bold"/>
+			
+				<WrapPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Margin="5">
+					<Button Content="Начать сеанс" Margin="10,0" HorizontalAlignment="Center" Click="LeaveFeedbackButton_Click"/>	
+					<Button Content="Отменить бронь" Margin="10,0" HorizontalAlignment="Center" Click="CancelBookingButton_Click"/>
+				</WrapPanel>
+				<Button Content="Оставить отзыв" Margin="10,0" HorizontalAlignment="Center" Click="LeaveFeedbackButton_Click"/>
+			</StackPanel>
+		</Grid>
+	</Grid>
+
+</UserControl>

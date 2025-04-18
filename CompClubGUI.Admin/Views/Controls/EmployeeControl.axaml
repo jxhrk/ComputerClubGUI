@@ -1,0 +1,66 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:CompClubGUI.Admin.API.Models"
+			 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CompClubGUI.Admin.EmployeeControl"
+			 x:DataType="vm:EmployeeModel">
+	<UserControl.Styles>
+		<Style Selector="TextBlock" x:DataType="TextBlock">
+			<Setter Property="VerticalAlignment" Value="Center"/>
+		</Style>
+	</UserControl.Styles>
+	<Expander HorizontalAlignment="Stretch" IsExpanded="{Binding IsExpanded}">
+		<Expander.Header>
+			<Grid>
+				<StackPanel Orientation="Horizontal" Spacing="10" Margin="5" Grid.Row="0">
+					<TextBlock Text="{Binding Id}"/>
+					<TextBox Text="{Binding Login}"/>
+				</StackPanel>
+				<TextBlock IsVisible="{Binding IsDirty}" Foreground="Yellow" Text="*" FontSize="32" HorizontalAlignment="Right"/>
+			</Grid>
+		</Expander.Header>
+		<Grid RowDefinitions="Auto,*">
+			<Grid Grid.Row="0" ColumnDefinitions="Auto,Auto" RowDefinitions="*,*,*,*,*,*,*,*,*,*">
+				<TextBlock Grid.Column="0" Grid.Row="0" Text="Логин:" Margin="0,0,10,0"/>
+				<TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Login}"/>
+
+				<TextBlock Grid.Column="0" Grid.Row="1" Text="Пароль:" Margin="0,0,10,0"/>
+				<TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Password}"
+						 PasswordChar="*"/>
+
+				<TextBlock Grid.Column="0" Grid.Row="2" Text="Данные паспорта:" IsVisible="{Binding IsNewlyCreated}" Margin="0,0,10,0"/>
+				<TextBox Grid.Column="1" Grid.Row="2" Text="{Binding PassportData}" IsVisible="{Binding IsNewlyCreated}"/>
+
+				<TextBlock Grid.Column="0" Grid.Row="3" Text="Дата найма:" Margin="0,0,10,0"/>
+				<TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding HireDate, StringFormat='{}{0:dd.MM.yyyy}'}"/>
+
+				<TextBlock Grid.Column="0" Grid.Row="4" Text="Роль:" Margin="0,0,10,0"/>
+				<ComboBox Grid.Column="1" Grid.Row="4" x:Name="RolesComboBox" SelectedItem="{Binding Role}"/>
+
+				<TextBlock Grid.Column="0" Grid.Row="5" Text="Зарплата:" Margin="0,0,10,0"/>
+				<TextBox Grid.Column="1" Grid.Row="5" Text="{Binding Salary}"/>
+
+				<TextBlock Grid.Column="0" Grid.Row="6" Text="ID Клуба:" Margin="0,0,10,0"/>
+				<TextBox Grid.Column="1" Grid.Row="6" Text="{Binding IdClub}"/>
+
+				<TextBlock Grid.Column="0" Grid.Row="7" Text="Последний вход:" Margin="0,0,10,0"/>
+				<TextBlock Grid.Column="1" Grid.Row="7" Text="{Binding LastLogin, StringFormat='{}{0:dd.MM.yyyy HH:mm}'}"/>
+
+				<TextBlock Grid.Column="0" Grid.Row="8" Text="Дата изменения пароля:" Margin="0,0,10,0"/>
+				<TextBlock Grid.Column="1" Grid.Row="8" Text="{Binding PasswordChangedAt, StringFormat='{}{0:dd.MM.yyyy HH:mm}'}"/>
+
+				<TextBlock Grid.Column="0" Grid.Row="9" Text="Дата создания:" Margin="0,0,10,0"/>
+				<TextBlock Grid.Column="1" Grid.Row="9" Text="{Binding CreatedAt, StringFormat='{}{0:dd.MM.yyyy HH:mm}'}"/>
+			</Grid>
+
+
+			<WrapPanel Grid.Row="1">
+				<Button Content="Сохранить" IsVisible="{Binding IsDirty}" Click="SaveButton_Click" Margin="0,0,10,0"/>
+				<Button Content="Удалить" IsVisible="{Binding !IsNewlyCreated}" Click="DeleteButton_Click" Margin="0,0,10,0"/>
+			</WrapPanel>
+		</Grid>
+
+	</Expander>
+</UserControl>

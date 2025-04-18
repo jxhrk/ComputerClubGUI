@@ -1,0 +1,67 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+    <Platforms>AnyCPU;x64</Platforms>
+    <Configurations>Debug;Release</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" />
+    <PackageReference Include="Avalonia.Themes.Fluent" />
+    <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+    <PackageReference Include="CommunityToolkit.Mvvm" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CompClubGUICore\CompClubGUICore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AvaloniaXaml Update="Views\BuyNewPlaceView.axaml">
+      <SubType>Designer</SubType>
+    </AvaloniaXaml>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\BookingsHistoryView.axaml.cs">
+      <DependentUpon>BookingsHistoryView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Controls\ListsElements\FeedbackListViewItem.axaml.cs">
+      <DependentUpon>FeedbackListViewItem.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PlaceView.axaml.cs">
+      <DependentUpon>PlaceView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Controls\ListsElements\BookingListViewItem.axaml.cs">
+      <DependentUpon>BookingListViewItem.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Reviews\LeaveReviewView.axaml.cs">
+      <DependentUpon>LeaveReviewView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Reviews\ReviewsView.axaml.cs">
+      <DependentUpon>ReviewsView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\BuyNewPlaceView.axaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>BuyNewPlaceView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SettingsView.axaml.cs">
+      <DependentUpon>SettingsView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Balance\CardView.axaml.cs">
+      <DependentUpon>CardView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Balance\BalanceAddView.axaml.cs">
+      <DependentUpon>BalanceAddView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\LoginRegView.axaml.cs">
+      <DependentUpon>LoginRegView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Balance\BalanceView.axaml.cs">
+      <DependentUpon>BalanceView.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>

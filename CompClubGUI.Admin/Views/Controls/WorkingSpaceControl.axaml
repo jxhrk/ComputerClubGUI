@@ -1,0 +1,54 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:CompClubGUI.Admin.API.Models"
+             xmlns:admin="clr-namespace:CompClubGUI.Admin"
+			 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CompClubGUI.Admin.WorkingSpaceControl"
+			 x:DataType="vm:PlaceModel">
+	<UserControl.Styles>
+		<Style Selector="TextBlock" x:DataType="TextBlock">
+			<Setter Property="VerticalAlignment" Value="Center"/>
+		</Style>
+	</UserControl.Styles>
+	<Expander HorizontalAlignment="Stretch" IsExpanded="{Binding IsExpanded}">
+		<Expander.Header>
+			<Grid>
+				<StackPanel Orientation="Horizontal" Spacing="10" Margin="5" Grid.Row="0">
+					<TextBlock Text="{Binding Id}"/>
+					<TextBox Text="{Binding Name}"/>
+					<TextBlock IsVisible="{Binding IsPlaceReserved}" Foreground="{DynamicResource ForegroundHighlight}" Text="Забронировано"/>
+					<TextBlock IsVisible="{Binding IsSessionActive}" Foreground="Green" Text="Сессия активна"/>
+				</StackPanel>
+				<TextBlock IsVisible="{Binding IsDirty}" Foreground="Yellow" Text="*" FontSize="32" HorizontalAlignment="Right"/>
+			</Grid>
+		</Expander.Header>
+		<Grid RowDefinitions="Auto,*">
+			<Grid Grid.Row="0" ColumnDefinitions="Auto,Auto" RowDefinitions="*,*,*,*" IsVisible="{Binding IsPlaceReserved}">
+				<TextBlock Grid.Column="0" Grid.Row="0" Text="Пользователь:" Margin="0,0,10,0"/>
+				<TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding User, FallbackValue=user}"/>
+					
+
+				<TextBlock Grid.Column="0" Grid.Row="1" Text="Дата начала сессии:" Margin="0,0,10,0"/>
+				<admin:DateTimeSelector Grid.Column="1" Grid.Row="1" DataDateTime="{Binding SessionStartDate, Mode=TwoWay}"/>
+
+				<TextBlock Grid.Column="0" Grid.Row="2" Text="Тариф:" Margin="0,0,10,0"/>
+				<TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding IdTariff, FallbackValue=0}"/>
+
+				<TextBlock Grid.Column="0" Grid.Row="3" Text="Статус:" Margin="0,0,10,0"/>
+				<TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding Status, FallbackValue=status}"/>
+			</Grid>
+				
+
+
+			<WrapPanel Grid.Row="1">
+				<Button Content="Сохранить" IsVisible="{Binding IsDirty}" Click="SaveButton_Click" Margin="0,0,10,0"/>
+				<Button Content="Удалить" IsVisible="{Binding !IsNewlyCreated}" Click="DeleteButton_Click" Margin="0,0,10,0"/>
+				<Button Content="Удалить бронь" IsVisible="{Binding IsPlaceReserved}" Margin="0,0,10,0"/>
+				<Button Content="Добавить бронь" IsVisible="{Binding !IsPlaceReserved}" Margin="0,0,10,0"/>
+			</WrapPanel>
+		</Grid>
+			
+	</Expander>
+</UserControl>

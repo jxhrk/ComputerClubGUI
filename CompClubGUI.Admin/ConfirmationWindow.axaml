@@ -1,0 +1,18 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" Width="350" Height="90"
+        x:Class="CompClubGUI.Admin.ConfirmationWindow"
+		WindowStartupLocation="CenterScreen"
+		CanResize="False"
+        Title="Предупреждение">
+	<Grid Background="{DynamicResource Background}">
+		<TextBlock Text="Остались непримененные изменения" Margin="10"/>
+		<StackPanel Orientation="Horizontal" Margin="7" Spacing="7" VerticalAlignment="Bottom">
+			<!--<Button Content="Сохранить" Click="YesButton_Click"/>-->
+			<Button Content="Отменить изменения" Click="NoButton_Click"/>
+			<Button Content="Вернуться" Click="CancelButton_Click"/>
+		</StackPanel>
+	</Grid>
+</Window>
